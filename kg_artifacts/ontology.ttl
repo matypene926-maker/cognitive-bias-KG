@@ -1,0 +1,282 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cb:   <http://cogbias-kg.edu/entity/> .
+@prefix cbp:  <http://cogbias-kg.edu/property/> .
+@prefix cbo:  <http://cogbias-kg.edu/ontology/> .
+
+# =============================================================================
+# ONTOLOGY DECLARATION
+# Cognitive Bias on the Web Ontology
+# Lab reference: TP RDFLib Exercise 4 + TP Protégé Part 2
+# =============================================================================
+
+<http://cogbias-kg.edu/ontology/CognitiveBiasOntology>
+    a owl:Ontology ;
+    rdfs:label "Cognitive Bias on the Web Ontology"@en ;
+    rdfs:comment "Ontology for the domain of cognitive biases applied to the web and social media."@en .
+
+# =============================================================================
+# CLASSES — Hierarchy (rdfs:subClassOf)
+# =============================================================================
+
+cbo:PsychologicalPhenomenon
+    a owl:Class ;
+    rdfs:label "Psychological Phenomenon"@en ;
+    rdfs:comment "Any psychological process or phenomenon affecting human cognition."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:CognitiveBias
+    a owl:Class ;
+    rdfs:label "Cognitive Bias"@en ;
+    rdfs:comment "A systematic pattern of deviation from rationality in judgment."@en ;
+    rdfs:subClassOf cbo:PsychologicalPhenomenon .
+
+cbo:PerceptualBias
+    a owl:Class ;
+    rdfs:label "Perceptual Bias"@en ;
+    rdfs:comment "A bias in how information is perceived or interpreted."@en ;
+    rdfs:subClassOf cbo:CognitiveBias .
+
+cbo:MemoryBias
+    a owl:Class ;
+    rdfs:label "Memory Bias"@en ;
+    rdfs:comment "A bias related to memory and recall."@en ;
+    rdfs:subClassOf cbo:CognitiveBias .
+
+cbo:SocialBias
+    a owl:Class ;
+    rdfs:label "Social Bias"@en ;
+    rdfs:comment "A bias occurring in social interactions and group dynamics."@en ;
+    rdfs:subClassOf cbo:CognitiveBias .
+
+cbo:Heuristic
+    a owl:Class ;
+    rdfs:label "Heuristic"@en ;
+    rdfs:comment "A mental shortcut used for problem-solving and decision-making."@en ;
+    rdfs:subClassOf cbo:PsychologicalPhenomenon .
+
+cbo:DigitalPlatform
+    a owl:Class ;
+    rdfs:label "Digital Platform"@en ;
+    rdfs:comment "An online digital platform or service."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:Platform
+    a owl:Class ;
+    rdfs:label "Platform"@en ;
+    rdfs:comment "Alias for DigitalPlatform."@en ;
+    rdfs:subClassOf cbo:DigitalPlatform .
+
+cbo:SocialMediaPlatform
+    a owl:Class ;
+    rdfs:label "Social Media Platform"@en ;
+    rdfs:comment "A platform for social interaction and content sharing (Facebook, Twitter...)."@en ;
+    rdfs:subClassOf cbo:DigitalPlatform .
+
+cbo:SearchEngine
+    a owl:Class ;
+    rdfs:label "Search Engine"@en ;
+    rdfs:comment "An information retrieval system (Google, Bing...)."@en ;
+    rdfs:subClassOf cbo:DigitalPlatform .
+
+cbo:WebEffect
+    a owl:Class ;
+    rdfs:label "Web Effect"@en ;
+    rdfs:comment "An effect or outcome observed on the web or social media."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:Effect
+    a owl:Class ;
+    rdfs:label "Effect"@en ;
+    rdfs:comment "Alias for WebEffect."@en ;
+    rdfs:subClassOf cbo:WebEffect .
+
+cbo:CognitivePhenomenon
+    a owl:Class ;
+    rdfs:label "Cognitive Phenomenon"@en ;
+    rdfs:comment "A phenomenon affecting cognition at scale (Echo Chamber, Filter Bubble)."@en ;
+    rdfs:subClassOf cbo:WebEffect .
+
+cbo:SocialEffect
+    a owl:Class ;
+    rdfs:label "Social Effect"@en ;
+    rdfs:comment "An effect on social dynamics (Polarization, Tribalism)."@en ;
+    rdfs:subClassOf cbo:WebEffect .
+
+cbo:InformationEffect
+    a owl:Class ;
+    rdfs:label "Information Effect"@en ;
+    rdfs:comment "An effect on information quality or spread (Misinformation, Fake News)."@en ;
+    rdfs:subClassOf cbo:WebEffect .
+
+cbo:HumanBehavior
+    a owl:Class ;
+    rdfs:label "Human Behavior"@en ;
+    rdfs:comment "An observable human behavior, especially online."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:Behavior
+    a owl:Class ;
+    rdfs:label "Behavior"@en ;
+    rdfs:comment "Alias for HumanBehavior."@en ;
+    rdfs:subClassOf cbo:HumanBehavior .
+
+cbo:OnlineBehavior
+    a owl:Class ;
+    rdfs:label "Online Behavior"@en ;
+    rdfs:comment "Behavior exhibited in online contexts (sharing, clicking, scrolling)."@en ;
+    rdfs:subClassOf cbo:HumanBehavior .
+
+cbo:Concept
+    a owl:Class ;
+    rdfs:label "Concept"@en ;
+    rdfs:comment "An abstract concept related to digital systems."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:Person
+    a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "A person (researcher, journalist, public figure)."@en ;
+    rdfs:subClassOf owl:Thing .
+
+cbo:Organization
+    a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "An organization (university, company, media outlet)."@en ;
+    rdfs:subClassOf owl:Thing .
+
+# =============================================================================
+# DISJOINT CLASSES (TP Protégé Part 2)
+# =============================================================================
+
+cbo:PerceptualBias owl:disjointWith cbo:SocialBias .
+cbo:SocialMediaPlatform owl:disjointWith cbo:SearchEngine .
+cbo:SocialEffect owl:disjointWith cbo:InformationEffect .
+
+# =============================================================================
+# OBJECT PROPERTIES — with domain, range, and special types
+# =============================================================================
+
+cbp:affects
+    a owl:ObjectProperty ;
+    rdfs:label "affects"@en ;
+    rdfs:comment "A cognitive bias affects a platform, behavior, or effect."@en ;
+    rdfs:domain cbo:CognitiveBias ;
+    rdfs:range owl:Thing .
+
+cbp:causedBy
+    a owl:ObjectProperty ;
+    rdfs:label "caused by"@en ;
+    rdfs:comment "A web effect is caused by a bias, platform, or concept."@en ;
+    rdfs:domain cbo:WebEffect ;
+    rdfs:range owl:Thing ;
+    owl:inverseOf cbp:causes .
+
+cbp:causes
+    a owl:ObjectProperty ;
+    rdfs:label "causes"@en ;
+    rdfs:comment "Inverse of causedBy."@en ;
+    rdfs:range owl:Thing ;
+    owl:inverseOf cbp:causedBy .
+
+cbp:appearsIn
+    a owl:ObjectProperty ;
+    rdfs:label "appears in"@en ;
+    rdfs:comment "A cognitive bias manifests on a specific platform."@en ;
+    rdfs:domain cbo:CognitiveBias ;
+    rdfs:range cbo:DigitalPlatform .
+
+cbp:reinforces
+    a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:label "reinforces"@en ;
+    rdfs:comment "An entity reinforces another entity (bidirectional amplification)."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:leadsTo
+    a owl:ObjectProperty ;
+    rdfs:label "leads to"@en ;
+    rdfs:comment "An entity leads to a web effect."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range cbo:WebEffect .
+
+cbp:promotes
+    a owl:ObjectProperty ;
+    rdfs:label "promotes"@en ;
+    rdfs:comment "An entity promotes another entity or behavior."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:spreads
+    a owl:ObjectProperty ;
+    rdfs:label "spreads"@en ;
+    rdfs:comment "An entity spreads information or content."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:creates
+    a owl:ObjectProperty ;
+    rdfs:label "creates"@en ;
+    rdfs:comment "An entity creates another entity or effect."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:influences
+    a owl:ObjectProperty ;
+    rdfs:label "influences"@en ;
+    rdfs:comment "An entity influences another entity."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:drives
+    a owl:ObjectProperty ;
+    rdfs:label "drives"@en ;
+    rdfs:comment "An entity drives a behavior or outcome."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+cbp:exploits
+    a owl:ObjectProperty ;
+    rdfs:label "exploits"@en ;
+    rdfs:comment "A platform exploits a cognitive bias."@en ;
+    rdfs:domain cbo:DigitalPlatform ;
+    rdfs:range cbo:CognitiveBias .
+
+cbp:uses
+    a owl:ObjectProperty ;
+    rdfs:label "uses"@en ;
+    rdfs:comment "A platform uses a technology or algorithm."@en ;
+    rdfs:domain cbo:DigitalPlatform ;
+    rdfs:range cbo:Concept .
+
+cbp:relatedTo
+    a owl:ObjectProperty , owl:SymmetricProperty , owl:TransitiveProperty ;
+    rdfs:label "related to"@en ;
+    rdfs:comment "Generic relation between two entities in the domain."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing .
+
+# =============================================================================
+# KNOWN INSTANCES — precise class assignments
+# =============================================================================
+
+cb:Confirmation_Bias     a cbo:PerceptualBias .
+cb:Dunning_Kruger_Effect a cbo:PerceptualBias .
+cb:Availability_Heuristic a cbo:Heuristic .
+cb:Echo_Chamber          a cbo:CognitivePhenomenon .
+cb:Filter_Bubble         a cbo:CognitivePhenomenon .
+cb:Bandwagon_Effect      a cbo:SocialBias .
+cb:Tribalism             a cbo:SocialBias .
+cb:Groupthink            a cbo:SocialBias .
+cb:Political_Polarization a cbo:SocialEffect .
+cb:Misinformation        a cbo:InformationEffect .
+cb:Fake_News             a cbo:InformationEffect .
+cb:Facebook              a cbo:SocialMediaPlatform .
+cb:Twitter               a cbo:SocialMediaPlatform .
+cb:YouTube               a cbo:SocialMediaPlatform .
+cb:TikTok                a cbo:SocialMediaPlatform .
+cb:Instagram             a cbo:SocialMediaPlatform .
+cb:Google                a cbo:SearchEngine .
+cb:Recommendation_Algorithm a cbo:Concept .

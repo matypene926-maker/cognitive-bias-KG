@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Data (large files — tracked via Git LFS or excluded)
+data/crawler_output.jsonl
+data/preprocessed.jsonl
+data/kge/
+
+# KG artifacts (generated — not tracked)
+kg_artifacts/expanded.nt
+kg_artifacts/biases.rdf
+kg_artifacts/biases.json
+
+# API keys — NEVER commit
+.env
+*.env
+secrets.py
+
+# Reports (generated)
+reports/*.pdf
+
+# OS
+Thumbs.db

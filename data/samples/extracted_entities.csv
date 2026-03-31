@@ -1,0 +1,37 @@
+entity_text,entity_label,source_url
+Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Confirmation_bias
+Echo Chamber,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Filter Bubble,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Filter_bubble
+Dunning-Kruger Effect,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Dunning-Kruger_effect
+Availability Heuristic,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Availability_heuristic
+Bandwagon Effect,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Confirmation_bias
+Motivated Reasoning,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Confirmation_bias
+Illusory Truth Effect,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Misinformation
+Tribalism,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Political_polarization
+Backfire Effect,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Misinformation
+In-group Favoritism,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Political_polarization
+Facebook,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+YouTube,PLATFORM,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Twitter,PLATFORM,https://en.wikipedia.org/wiki/Misinformation
+TikTok,PLATFORM,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Social Media,PLATFORM,https://en.wikipedia.org/wiki/Confirmation_bias
+Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Filter_bubble
+Google,PLATFORM,https://en.wikipedia.org/wiki/Filter_bubble
+Amazon,PLATFORM,https://en.wikipedia.org/wiki/Filter_bubble
+News Feed,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Political Polarization,EFFECT,https://en.wikipedia.org/wiki/Political_polarization
+Misinformation,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Radicalization,EFFECT,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Algorithmic Radicalization,EFFECT,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Disinformation,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Fake News,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Hate Speech,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Extremism,EFFECT,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Opinion Formation,EFFECT,https://en.wikipedia.org/wiki/Confirmation_bias
+Political Division,EFFECT,https://en.wikipedia.org/wiki/Political_polarization
+Selective Exposure,BEHAVIOR,https://en.wikipedia.org/wiki/Confirmation_bias
+Sharing,BEHAVIOR,https://en.wikipedia.org/wiki/Misinformation
+Engagement,BEHAVIOR,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Fact-checking,BEHAVIOR,https://en.wikipedia.org/wiki/Misinformation
+News Consumption,BEHAVIOR,https://en.wikipedia.org/wiki/Availability_heuristic
+Online Discourse,BEHAVIOR,https://en.wikipedia.org/wiki/Dunning-Kruger_effect

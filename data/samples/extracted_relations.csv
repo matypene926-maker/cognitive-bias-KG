@@ -1,0 +1,34 @@
+subject,subject_label,relation,object,object_label,source_url
+Confirmation Bias,COGNITIVE_BIAS,affects,Opinion Formation,EFFECT,https://en.wikipedia.org/wiki/Confirmation_bias
+Confirmation Bias,COGNITIVE_BIAS,reinforces,Echo Chamber,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Confirmation_bias
+Confirmation Bias,COGNITIVE_BIAS,leadsTo,Political Polarization,EFFECT,https://en.wikipedia.org/wiki/Confirmation_bias
+Confirmation Bias,COGNITIVE_BIAS,appearsIn,Social Media,PLATFORM,https://en.wikipedia.org/wiki/Confirmation_bias
+Echo Chamber,COGNITIVE_BIAS,causedBy,Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Echo Chamber,COGNITIVE_BIAS,leadsTo,Political Polarization,EFFECT,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Echo Chamber,COGNITIVE_BIAS,appearsIn,Facebook,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Echo Chamber,COGNITIVE_BIAS,appearsIn,Twitter,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Echo Chamber,COGNITIVE_BIAS,reinforces,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+Filter Bubble,COGNITIVE_BIAS,causedBy,Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Filter_bubble
+Filter Bubble,COGNITIVE_BIAS,leadsTo,Misinformation,EFFECT,https://en.wikipedia.org/wiki/Filter_bubble
+Filter Bubble,COGNITIVE_BIAS,appearsIn,Facebook,PLATFORM,https://en.wikipedia.org/wiki/Filter_bubble
+Filter Bubble,COGNITIVE_BIAS,reinforces,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Filter_bubble
+Misinformation,EFFECT,causedBy,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Misinformation
+Misinformation,EFFECT,spreads,Social Media,PLATFORM,https://en.wikipedia.org/wiki/Misinformation
+Misinformation,EFFECT,leadsTo,Political Division,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Political Polarization,EFFECT,causedBy,Echo Chamber,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Political_polarization
+Political Polarization,EFFECT,causedBy,Filter Bubble,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Political_polarization
+Political Polarization,EFFECT,causedBy,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Political_polarization
+Algorithmic Radicalization,EFFECT,causedBy,Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Algorithmic Radicalization,EFFECT,appearsIn,YouTube,PLATFORM,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Algorithmic Radicalization,EFFECT,leadsTo,Extremism,EFFECT,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Recommendation Algorithm,PLATFORM,reinforces,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Filter_bubble
+Recommendation Algorithm,PLATFORM,creates,Filter Bubble,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Filter_bubble
+Recommendation Algorithm,PLATFORM,drives,Engagement,BEHAVIOR,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Dunning-Kruger Effect,COGNITIVE_BIAS,reinforces,Misinformation,EFFECT,https://en.wikipedia.org/wiki/Dunning-Kruger_effect
+Dunning-Kruger Effect,COGNITIVE_BIAS,affects,Online Discourse,BEHAVIOR,https://en.wikipedia.org/wiki/Dunning-Kruger_effect
+Availability Heuristic,COGNITIVE_BIAS,affects,News Consumption,BEHAVIOR,https://en.wikipedia.org/wiki/Availability_heuristic
+Illusory Truth Effect,COGNITIVE_BIAS,reinforces,Misinformation,EFFECT,https://en.wikipedia.org/wiki/Misinformation
+Selective Exposure,BEHAVIOR,reinforces,Confirmation Bias,COGNITIVE_BIAS,https://en.wikipedia.org/wiki/Confirmation_bias
+Facebook,PLATFORM,uses,Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Echo_chamber_(media)
+YouTube,PLATFORM,uses,Recommendation Algorithm,PLATFORM,https://en.wikipedia.org/wiki/Algorithmic_radicalization
+Twitter,PLATFORM,spreads,Misinformation,EFFECT,https://en.wikipedia.org/wiki/Misinformation

@@ -1,0 +1,26 @@
+# Cognitive Bias Knowledge Graph — Dependencies
+# Web Mining & Semantics
+
+# ── Web Crawling ──────────────────────────────────────────────────────────
+httpx>=0.27.0           # Modern async-compatible HTTP client
+trafilatura>=1.8.0      # Main content extraction from web pages
+
+# ── NLP ───────────────────────────────────────────────────────────────────
+spacy>=3.7.0            # NLP pipeline (NER, POS, dependency parsing)
+# Install model separately:
+# python -m spacy download en_core_web_sm   (lightweight)
+# python -m spacy download en_core_web_trf  (transformer, more accurate)
+
+# ── Knowledge Graph (RDF) ─────────────────────────────────────────────────
+rdflib>=7.0.0           # RDF graph manipulation (parse, query, serialize)
+
+# ── KGE (optional — for real training) ───────────────────────────────────
+# pykeen>=1.10.0        # Knowledge Graph Embedding (TransE, DistMult, RotatE)
+# torch>=2.0.0          # PyTorch backend for PyKEEN
+
+# ── LLM APIs (optional — for RAG) ────────────────────────────────────────
+anthropic>=0.25.0       # Anthropic Claude API (optional)
+openai>=1.0.0           # OpenAI GPT API (optional)
+
+# ── Utilities ─────────────────────────────────────────────────────────────
+requests>=2.31.0        # HTTP requests for API calls

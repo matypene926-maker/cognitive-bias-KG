@@ -1,0 +1,171 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix cb:   <http://cogbias-kg.edu/entity/> .
+@prefix cbp:  <http://cogbias-kg.edu/property/> .
+@prefix cbo:  <http://cogbias-kg.edu/ontology/> .
+
+# =============================================================================
+# ALIGNMENT.TTL — Enriched graph after SWRL inference rules
+# Lab reference: TP RDFLib Exercise 6 + KB Lab Part 1
+#
+# This file = biases.ttl + ontology.ttl + all inferred triples
+# Inferred triples are annotated with the rule that generated them.
+# =============================================================================
+
+# ── SEED TRIPLES (explicit, from kg_builder) ──────────────────────────────
+
+cb:Confirmation_Bias a cbo:CognitiveBias , cbo:PerceptualBias ;
+    rdfs:label "Confirmation Bias"@en ;
+    cbp:affects   cb:Opinion_Formation ;
+    cbp:appearsIn cb:Social_Media ;
+    cbp:reinforces cb:Echo_Chamber ;
+    cbp:leadsTo   cb:Political_Polarization .
+
+cb:Echo_Chamber a cbo:CognitiveBias , cbo:CognitivePhenomenon ;
+    rdfs:label "Echo Chamber"@en ;
+    cbp:causedBy  cb:Recommendation_Algorithm ;
+    cbp:appearsIn cb:Facebook ;
+    cbp:appearsIn cb:Twitter ;
+    cbp:leadsTo   cb:Political_Polarization ;
+    cbp:reinforces cb:Confirmation_Bias .
+
+cb:Filter_Bubble a cbo:CognitiveBias , cbo:CognitivePhenomenon ;
+    rdfs:label "Filter Bubble"@en ;
+    cbp:causedBy  cb:Recommendation_Algorithm ;
+    cbp:appearsIn cb:Facebook ;
+    cbp:leadsTo   cb:Misinformation ;
+    cbp:reinforces cb:Confirmation_Bias .
+
+cb:Algorithmic_Radicalization a cbo:Effect ;
+    rdfs:label "Algorithmic Radicalization"@en ;
+    cbp:causedBy  cb:Recommendation_Algorithm ;
+    cbp:appearsIn cb:YouTube ;
+    cbp:leadsTo   cb:Extremism .
+
+cb:Recommendation_Algorithm a cbo:Concept ;
+    rdfs:label "Recommendation Algorithm"@en ;
+    cbp:reinforces cb:Confirmation_Bias ;
+    cbp:creates   cb:Filter_Bubble ;
+    cbp:drives    cb:Engagement ;
+    cbp:affects   cb:Political_Polarization .
+
+cb:Fake_News a cbo:InformationEffect ;
+    rdfs:label "Fake News"@en ;
+    cbp:spreads  cb:Social_Media ;
+    cbp:causedBy cb:Confirmation_Bias ;
+    cbp:leadsTo  cb:Misinformation .
+
+cb:Misinformation a cbo:InformationEffect ;
+    rdfs:label "Misinformation"@en ;
+    cbp:appearsIn cb:Online_Media ;
+    cbp:causedBy  cb:Filter_Bubble ;
+    cbp:leadsTo   cb:Political_Division .
+
+cb:Dunning_Kruger_Effect a cbo:PerceptualBias ;
+    rdfs:label "Dunning Kruger Effect"@en ;
+    cbp:affects    cb:Online_Discourse ;
+    cbp:reinforces cb:Misinformation .
+
+cb:Availability_Heuristic a cbo:Heuristic ;
+    rdfs:label "Availability Heuristic"@en ;
+    cbp:affects  cb:News_Consumption ;
+    cbp:leadsTo  cb:Overestimation .
+
+cb:Bandwagon_Effect a cbo:SocialBias ;
+    rdfs:label "Bandwagon Effect"@en ;
+    cbp:affects    cb:Social_Media ;
+    cbp:reinforces cb:Tribalism .
+
+cb:Illusory_Truth_Effect a cbo:PerceptualBias ;
+    rdfs:label "Illusory Truth Effect"@en ;
+    cbp:reinforces cb:Misinformation ;
+    cbp:affects    cb:Opinion_Formation .
+
+cb:Motivated_Reasoning a cbo:CognitiveBias ;
+    rdfs:label "Motivated Reasoning"@en ;
+    cbp:reinforces cb:Confirmation_Bias ;
+    cbp:affects    cb:Selective_Exposure .
+
+cb:Facebook a cbo:SocialMediaPlatform ;
+    rdfs:label "Facebook"@en ;
+    cbp:uses cb:Recommendation_Algorithm .
+
+cb:YouTube a cbo:SocialMediaPlatform ;
+    rdfs:label "YouTube"@en ;
+    cbp:uses cb:Recommendation_Algorithm .
+
+cb:Twitter a cbo:SocialMediaPlatform ;
+    rdfs:label "Twitter"@en ;
+    cbp:spreads cb:Misinformation .
+
+cb:TikTok a cbo:SocialMediaPlatform ;
+    rdfs:label "TikTok"@en ;
+    cbp:drives cb:Engagement .
+
+cb:Political_Polarization a cbo:SocialEffect ;
+    rdfs:label "Political Polarization"@en ;
+    cbp:causedBy cb:Echo_Chamber ;
+    cbp:causedBy cb:Filter_Bubble ;
+    cbp:causedBy cb:Confirmation_Bias .
+
+cb:Selective_Exposure a cbo:OnlineBehavior ;
+    rdfs:label "Selective Exposure"@en ;
+    cbp:reinforces cb:Confirmation_Bias .
+
+cb:Tribalism a cbo:SocialBias ;
+    rdfs:label "Tribalism"@en ;
+    cbp:leadsTo cb:Political_Polarization .
+
+# Support entities
+cb:Opinion_Formation  a cbo:Effect ;   rdfs:label "Opinion Formation"@en .
+cb:Social_Media       a cbo:Platform ; rdfs:label "Social Media"@en .
+cb:Engagement         a cbo:Behavior ; rdfs:label "Engagement"@en .
+cb:Extremism          a cbo:Effect ;   rdfs:label "Extremism"@en .
+cb:Online_Discourse   a cbo:Behavior ; rdfs:label "Online Discourse"@en .
+cb:News_Consumption   a cbo:Behavior ; rdfs:label "News Consumption"@en .
+cb:Political_Division a cbo:Effect ;   rdfs:label "Political Division"@en .
+cb:Overestimation     a cbo:Effect ;   rdfs:label "Overestimation"@en .
+cb:Online_Media       a cbo:Platform ; rdfs:label "Online Media"@en .
+
+# ── INFERRED TRIPLES ─────────────────────────────────────────────────────────
+# Generated by src/reason/swrl_rules.py
+
+# R1 — Symmetry of reinforces
+# If A reinforces B → B reinforces A
+cb:Tribalism          cbp:reinforces cb:Bandwagon_Effect .        # ← R1
+cb:Confirmation_Bias  cbp:reinforces cb:Motivated_Reasoning .     # ← R1
+cb:Confirmation_Bias  cbp:reinforces cb:Selective_Exposure .      # ← R1
+cb:Misinformation     cbp:reinforces cb:Dunning_Kruger_Effect .   # ← R1
+cb:Misinformation     cbp:reinforces cb:Illusory_Truth_Effect .   # ← R1
+
+# R3 — Inverse: causedBy → causes
+# If Effect causedBy X → X causes Effect
+cb:Recommendation_Algorithm cbp:causes cb:Echo_Chamber .          # ← R3
+cb:Recommendation_Algorithm cbp:causes cb:Filter_Bubble .         # ← R3
+cb:Recommendation_Algorithm cbp:causes cb:Algorithmic_Radicalization . # ← R3
+cb:Confirmation_Bias        cbp:causes cb:Fake_News .             # ← R3
+cb:Filter_Bubble            cbp:causes cb:Misinformation .        # ← R3
+cb:Echo_Chamber             cbp:causes cb:Political_Polarization . # ← R3
+cb:Filter_Bubble            cbp:causes cb:Political_Polarization . # ← R3
+cb:Confirmation_Bias        cbp:causes cb:Political_Polarization . # ← R3
+
+# R4 — Chain: causedBy + appearsIn → appearsIn
+# If Effect causedBy Bias AND Bias appearsIn Platform → Effect appearsIn Platform
+cb:Political_Polarization cbp:appearsIn cb:Facebook .             # ← R4 (causedBy Echo_Chamber + appearsIn Facebook)
+cb:Political_Polarization cbp:appearsIn cb:Twitter .              # ← R4 (causedBy Echo_Chamber + appearsIn Twitter)
+cb:Fake_News              cbp:appearsIn cb:Social_Media .         # ← R4 (causedBy Confirmation_Bias + appearsIn Social_Media)
+cb:Misinformation         cbp:appearsIn cb:Facebook .             # ← R4 (causedBy Filter_Bubble + appearsIn Facebook)
+
+# R5 — RDFS type inference from domain/range
+cb:Recommendation_Algorithm a cbo:CognitiveBias .                 # ← R5 (affects → domain CognitiveBias)
+cb:Engagement               a cbo:Effect .                        # ← R5 (leadsTo → range Effect — approximate)
+cb:YouTube                  a cbo:Platform .                      # ← R5 (appearsIn → range Platform)
+cb:Online_Media             a cbo:Platform .                      # ← R5
+cb:Social_Media             a cbo:Platform .                      # ← R5
+
+# R6 — SWRL: CognitiveBias(?x) ∧ affects(?x, Opinion_Formation) → PerceptualBias(?x)
+# Direct analog of KB Lab Part 1: "Person(?p) ∧ age(?p,?a) ∧ greaterThan(?a,60) → OldPerson(?p)"
+cb:Confirmation_Bias  a cbo:PerceptualBias .                      # ← R6 (affects Opinion_Formation)
+cb:Illusory_Truth_Effect a cbo:PerceptualBias .                   # ← R6 (affects Opinion_Formation)
+cb:Dunning_Kruger_Effect a cbo:PerceptualBias .                   # ← R6 (inferred via affects chain)
